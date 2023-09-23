@@ -1,3 +1,14 @@
 .active {
   border: 2px solid black;
 }
+ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border: 1px solid green;
+  font-weight: bold;
+  .inactive {
+    font-weight: 100;
+    color: grey;
+  }
+}

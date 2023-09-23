@@ -1,3 +1,4 @@
+import { daysOfWeek } from "../../utils/daysAndMonths/daysAndMonth";
 import style from "./Grid.module.scss";
 
 function Grid() {
@@ -5,13 +6,17 @@ function Grid() {
   let year = date.getFullYear();
   let month = date.getMonth();
   // Get the first day of the month
-  let dayone = new Date(year, month, 1).getDay();
+  let dayone = new Date(year, month, 0).getDay();
+  // console.log(dayone);
+  // console.log(new Date().getDay());
 
   // Get the last date of the month
   let lastdate = new Date(year, month + 1, 0).getDate();
+  console.log(lastdate);
 
   // Get the day of the last date of the month
   let dayend = new Date(year, month, lastdate).getDay();
+  console.log("Last weekday of the month: ", dayend);
 
   // Get the last date of the previous month
   let monthlastdate = new Date(year, month, 0).getDate();
@@ -37,7 +42,7 @@ function Grid() {
   }
 
   // Loop to add the first dates of the next month
-  for (let i = dayend; i < 6; i++) {
+  for (let i = dayend; i <= 6; i++) {
     list.push(i - dayend + 1);
   }
 
@@ -48,18 +53,30 @@ function Grid() {
   // update the HTML of the dates element
   // with the generated calendar
   // day.innerHTML = list;}
+  const indexOfFirstDate = list.indexOf(1);
+  console.log(list.indexOf(1));
+  console.log(list.indexOf(lastdate));
+
   return (
     <>
       <ul>
-        {list.map((day) => (
+        {daysOfWeek.map((day, index) => (
+          <div key={index}>{day}</div>
+        ))}
+        {list.map((day, index) => (
           <li
-            className={
+            key={index}
+            className={`${
               day == date.getDate() &&
               month === new Date().getMonth() &&
               year === new Date().getFullYear()
                 ? style.active
                 : ""
-            }
+            } ${
+              index < list.indexOf(1) || index > list.lastIndexOf(lastdate)
+                ? style.inactive
+                : ""
+            }`}
           >
             {day}
           </li>
