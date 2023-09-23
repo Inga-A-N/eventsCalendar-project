@@ -2,7 +2,7 @@ import "./App.css";
 // import Chevron_Left from "./assets/icons/chevron_left";
 // import Chevron_Right from "./assets/icons/chevron_right";
 import Calendar from "./components/Calendar/Calendar";
-import Grid from "./components/Grid/Grid";
+
 // import { months } from "./utils/daysAndMonths/daysAndMonth";
 
 function App() {
@@ -22,7 +22,6 @@ function App() {
       <p>{myDate.getMonth()}</p>
       <Date /> */}
       <Calendar />
-      <Grid />
     </>
   );
 }

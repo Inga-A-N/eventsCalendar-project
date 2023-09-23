@@ -3,6 +3,7 @@ import Chevron_Left from "../../assets/icons/chevron_left";
 import Chevron_Right from "../../assets/icons/chevron_right";
 import { months } from "../../utils/daysAndMonths/daysAndMonth";
 import style from "./Calendar.module.scss";
+import Grid from "../Grid/Grid";
 
 function Calendar() {
   let myDate = new Date();
@@ -40,6 +41,7 @@ function Calendar() {
 
       <p>{myDate.getMonth()}</p>
       <Date />
+      <Grid monthToShow={month} />
     </>
   );
 }
