@@ -1,25 +1,28 @@
 import { daysOfWeek } from "../../utils/daysAndMonths/daysAndMonth";
 import style from "./Grid.module.scss";
 
-function Grid({ monthToShow }: { monthToShow: number }) {
+function Grid({
+  monthToShow,
+  yearToShow,
+}: {
+  monthToShow: number;
+  yearToShow: number;
+}) {
+  // console.log(yearToShow);
   let date = new Date();
-  let year = date.getFullYear();
+  // let year = date.getFullYear();
   // let month = date.getMonth();
   // Get the first day of the month
-  let dayone = new Date(year, monthToShow, 0).getDay();
-  // console.log(dayone);
-  // console.log(new Date().getDay());
+  let dayone = new Date(yearToShow, monthToShow, 0).getDay();
 
   // Get the last date of the month
-  let lastdate = new Date(year, monthToShow + 1, 0).getDate();
-  console.log(lastdate);
+  let lastdate = new Date(yearToShow, monthToShow + 1, 0).getDate();
 
   // Get the day of the last date of the month
-  let dayend = new Date(year, monthToShow, lastdate).getDay();
-  console.log("Last weekday of the month: ", dayend);
+  let dayend = new Date(yearToShow, monthToShow, lastdate).getDay();
 
   // Get the last date of the previous month
-  let monthlastdate = new Date(year, monthToShow, 0).getDate();
+  let monthlastdate = new Date(yearToShow, monthToShow, 0).getDate();
 
   // Variable to store the generated calendar HTML
   let list: number[] = [];
@@ -46,17 +49,6 @@ function Grid({ monthToShow }: { monthToShow: number }) {
     list.push(i - dayend + 1);
   }
 
-  // Update the text of the current date element
-  // with the formatted current month and year
-  // currdate.innerText = `${months[month]} ${year}`;
-
-  // update the HTML of the dates element
-  // with the generated calendar
-  // day.innerHTML = list;}
-
-  console.log(list.indexOf(1));
-  console.log(list.indexOf(lastdate));
-
   return (
     <>
       <ul>
@@ -64,21 +56,22 @@ function Grid({ monthToShow }: { monthToShow: number }) {
           <div key={index}>{day}</div>
         ))}
         {list.map((day, index) => (
-          <li
-            key={index}
-            className={`${
-              day == date.getDate() &&
-              monthToShow === new Date().getMonth() &&
-              year === new Date().getFullYear()
-                ? style.active
-                : ""
-            } ${
-              index < list.indexOf(1) || index > list.lastIndexOf(lastdate)
-                ? style.inactive
-                : ""
-            }`}
-          >
-            {day}
+          <li key={index}>
+            <button
+              className={`${
+                day == date.getDate() &&
+                monthToShow === new Date().getMonth() &&
+                yearToShow === new Date().getFullYear()
+                  ? style.active
+                  : ""
+              } ${
+                index < list.indexOf(1) || index > list.lastIndexOf(lastdate)
+                  ? style.inactive
+                  : ""
+              }`}
+            >
+              {day}
+            </button>
           </li>
         ))}
       </ul>

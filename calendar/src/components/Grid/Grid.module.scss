@@ -1,14 +1,40 @@
-.active {
-  border: 2px solid black;
-}
 ul {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  border: 1px solid green;
+  border: 1px solid #ff16f4;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
   font-weight: bold;
-  .inactive {
-    font-weight: 100;
-    color: grey;
+  padding: 0;
+  background: #ffe1fe;
+
+  button {
+    box-sizing: border-box;
+    height: 5rem;
+    width: 3rem;
+    padding: 0%;
+    background: white;
+    border: none;
+    border-radius: 10px;
+    margin: 0.5rem;
+    filter: drop-shadow(2px 2px 2px grey);
+
+    &:hover {
+      border: 2px solid #ffe1fe;
+    }
+    &.active {
+      // border: none;
+      // outline: 0.2rem groove #ff16f4;
+      background: #ff16f4;
+    }
+    &.inactive {
+      font-weight: 100;
+      color: grey;
+      &:hover {
+        border: none;
+        cursor: default;
+      }
+    }
   }
 }
