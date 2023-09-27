@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { daysOfWeek } from "../../utils/daysAndMonths/daysAndMonth";
 import style from "./Grid.module.scss";
+import Modal from "../Modal/Modal";
 
 function Grid({
   monthToShow,
@@ -8,11 +10,8 @@ function Grid({
   monthToShow: number;
   yearToShow: number;
 }) {
-  // console.log(yearToShow);
   let date = new Date();
-  // let year = date.getFullYear();
-  // let month = date.getMonth();
-  // Get the first day of the month
+
   let dayone = new Date(yearToShow, monthToShow, 0).getDay();
 
   // Get the last date of the month
@@ -34,13 +33,6 @@ function Grid({
 
   // Loop to add the dates of the current month
   for (let i = 1; i <= lastdate; i++) {
-    // Check if the current date is today
-    // let isToday =
-    //   i === date.getDate() &&
-    //   month === new Date().getMonth() &&
-    //   year === new Date().getFullYear()
-    //     ? "active"
-    //     : "";
     list.push(i);
   }
 
@@ -49,32 +41,54 @@ function Grid({
     list.push(i - dayend + 1);
   }
 
+  const [modal, setModal] = useState(false);
+  const [modalDate, setModalDate] = useState("");
+  const handleDateSelect = (e: any) => {
+    modal && e.target.value.padStart(2, "0") != modalDate.slice(0, 2)
+      ? setModalDate(
+          new Date(yearToShow, monthToShow, e.target.value).toLocaleDateString()
+        )
+      : setModal(!modal);
+    setModalDate(
+      new Date(yearToShow, monthToShow, e.target.value).toLocaleDateString()
+    );
+  };
   return (
     <>
       <ul>
         {daysOfWeek.map((day, index) => (
           <div key={index}>{day}</div>
         ))}
-        {list.map((day, index) => (
-          <li key={index}>
-            <button
-              className={`${
-                day == date.getDate() &&
-                monthToShow === new Date().getMonth() &&
-                yearToShow === new Date().getFullYear()
-                  ? style.active
-                  : ""
-              } ${
-                index < list.indexOf(1) || index > list.lastIndexOf(lastdate)
-                  ? style.inactive
-                  : ""
-              }`}
-            >
+        {list.map((day, index) =>
+          index < list.indexOf(1) || index > list.lastIndexOf(lastdate) ? (
+            <li key={index} className={style.inactive}>
               {day}
-            </button>
-          </li>
-        ))}
+            </li>
+          ) : (
+            <li key={index}>
+              <button
+                className={`${
+                  day == date.getDate() &&
+                  monthToShow === new Date().getMonth() &&
+                  yearToShow === new Date().getFullYear()
+                    ? style.active
+                    : ""
+                } ${
+                  modal &&
+                  day.toString().padStart(2, "0") == modalDate.slice(0, 2)
+                    ? style.selected
+                    : ""
+                }`}
+                value={day}
+                onClick={handleDateSelect}
+              >
+                {day}
+              </button>
+            </li>
+          )
+        )}
       </ul>
+      {modal ? <Modal date={modalDate} /> : null}
     </>
   );
 }

@@ -12,10 +12,9 @@ function Calendar() {
   let currentYear = myDate.getFullYear();
   const [month, setMonth] = useState(currentMonth);
   const [year, setYear] = useState(currentYear);
-  console.log(month);
+
   const onLeftClick = () => {
     setMonth(month - 1);
-    console.log(month);
 
     if (month == 0) {
       setYear(year - 1);
@@ -23,10 +22,9 @@ function Calendar() {
       setMonth(11);
     }
   };
-  console.log("Outside set month ", year);
+
   const onRightClick = () => {
     setMonth(month + 1);
-    console.log(month);
 
     if (month == 11) {
       setYear(year + 1);
@@ -34,6 +32,7 @@ function Calendar() {
       setMonth(0);
     }
   };
+
   return (
     <>
       <h2>Today: {myDate.toLocaleDateString()}</h2>
