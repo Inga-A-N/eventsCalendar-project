@@ -55,40 +55,47 @@ function Grid({
   };
   return (
     <>
-      <ul>
-        {daysOfWeek.map((day, index) => (
-          <div key={index}>{day}</div>
-        ))}
-        {list.map((day, index) =>
-          index < list.indexOf(1) || index > list.lastIndexOf(lastdate) ? (
-            <li key={index} className={style.inactive}>
-              {day}
-            </li>
-          ) : (
-            <li key={index}>
-              <button
-                className={`${
-                  day == date.getDate() &&
-                  monthToShow === new Date().getMonth() &&
-                  yearToShow === new Date().getFullYear()
-                    ? style.active
-                    : ""
-                } ${
-                  modal &&
-                  day.toString().padStart(2, "0") == modalDate.slice(0, 2)
-                    ? style.selected
-                    : ""
-                }`}
-                value={day}
-                onClick={handleDateSelect}
-              >
-                {day}
-              </button>
-            </li>
-          )
-        )}
-      </ul>
-      {modal ? <Modal date={modalDate} /> : null}
+      <div className={style.modalsArrangement}>
+        <div>
+          <h2>{modal ? "Tasks/Events" : null}</h2>
+        </div>
+        <div>
+          <ul>
+            {daysOfWeek.map((day, index) => (
+              <div key={index}>{day}</div>
+            ))}
+            {list.map((day, index) =>
+              index < list.indexOf(1) || index > list.lastIndexOf(lastdate) ? (
+                <li key={index} className={style.inactive}>
+                  {day}
+                </li>
+              ) : (
+                <li key={index}>
+                  <button
+                    className={`${
+                      day == date.getDate() &&
+                      monthToShow === new Date().getMonth() &&
+                      yearToShow === new Date().getFullYear()
+                        ? style.active
+                        : ""
+                    } ${
+                      modal &&
+                      day.toString().padStart(2, "0") == modalDate.slice(0, 2)
+                        ? style.selected
+                        : ""
+                    }`}
+                    value={day}
+                    onClick={handleDateSelect}
+                  >
+                    {day}
+                  </button>
+                </li>
+              )
+            )}
+          </ul>
+        </div>
+        <div>{modal ? <Modal date={modalDate} /> : null}</div>
+      </div>
     </>
   );
 }

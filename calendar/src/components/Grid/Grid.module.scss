@@ -50,3 +50,8 @@ ul {
   align-items: center;
   justify-content: center;
 }
+.modalsArrangement {
+  display: grid;
+  grid-template-columns: 2fr auto 2fr;
+  column-gap: 2rem;
+}
