@@ -2,6 +2,8 @@ import { useState } from "react";
 import { daysOfWeek } from "../../utils/daysAndMonths/daysAndMonth";
 import style from "./Grid.module.scss";
 import Modal from "../Modal/Modal";
+import EventsList from "../../EventsList/EventsList";
+import { eventsData } from "../../eventsData";
 
 function Grid({
   monthToShow,
@@ -43,6 +45,8 @@ function Grid({
 
   const [modal, setModal] = useState(false);
   const [modalDate, setModalDate] = useState("");
+  const [events, setEvents] = useState(eventsData);
+
   const handleDateSelect = (e: any) => {
     modal && e.target.value.padStart(2, "0") != modalDate.slice(0, 2)
       ? setModalDate(
@@ -56,9 +60,7 @@ function Grid({
   return (
     <>
       <div className={style.modalsArrangement}>
-        <div>
-          <h2>{modal ? "Tasks/Events" : null}</h2>
-        </div>
+        <div>{modal ? <EventsList data={events} /> : null}</div>
         <div>
           <ul>
             {daysOfWeek.map((day, index) => (
