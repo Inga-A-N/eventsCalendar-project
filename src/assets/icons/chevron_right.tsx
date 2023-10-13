@@ -1,5 +1,5 @@
-const Chevron_Right = () => (
-  <button style={{ background: "transparent", border: "none" }}>
+const Chevron_Right = ({ click }) => (
+  <button style={{ background: "transparent", border: "none" }} onClick={click}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="1em"

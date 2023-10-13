@@ -1,5 +1,5 @@
 {
-  "name": "eventscalendar-project",
+  "name": "calendar",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "babel-plugin-macros": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -23,7 +22,7 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
-    "sass": "^1.66.1",
+    "sass": "^1.68.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }
