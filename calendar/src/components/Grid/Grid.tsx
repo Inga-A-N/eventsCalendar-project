@@ -3,7 +3,7 @@ import { daysOfWeek } from "../../utils/daysAndMonths/daysAndMonth";
 import style from "./Grid.module.scss";
 import Modal from "../Modal/Modal";
 import EventsList from "../../EventsList/EventsList";
-import { eventsData } from "../../eventsData";
+import { eventsData } from "../../utils/eventsData";
 
 function Grid({
   monthToShow,

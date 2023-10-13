@@ -5,7 +5,7 @@ const Modal = ({ date }: { date: string }) => {
     <>
       <h3>Modal</h3>
       <p>{date}</p>
-      <Form />
+      <Form date={date} />
     </>
   );
 };
