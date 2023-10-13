@@ -1,0 +1,21 @@
+.eventCard {
+  box-sizing: border-box;
+  border: solid #ff16f4;
+  margin: 1rem;
+  button {
+    box-sizing: border-box;
+
+    height: 2rem;
+    width: 6.5rem;
+    padding: 0%;
+    background: #ff16f4;
+    border: none;
+    border-radius: 10px;
+    margin: 0.5rem;
+    filter: drop-shadow(2px 2px 2px grey);
+
+    &:hover {
+      border: 2px solid #ffe1fe;
+    }
+  }
+}

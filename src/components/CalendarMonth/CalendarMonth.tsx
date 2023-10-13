@@ -46,13 +46,15 @@ export const CalendarMonth: React.FC<{}> = ({}) => {
         <Chevron_Right />
       </div>
       <div className={style.weekdays_container}>
-        {Weekdays.map((day) => (
-          <div className={style.week_day}>{day}</div>
+        {Weekdays.map((day, index) => (
+          <div className={style.week_day} key={index}>
+            {day}
+          </div>
         ))}
       </div>
       <div className={style.calendar}>
-        {createWeeks(monthDays).map((week) => (
-          <div className={style.week}>
+        {createWeeks(monthDays).map((week, index) => (
+          <div className={style.week} key={index}>
             {week.map((day) => createDates(day.day))}
           </div>
         ))}
