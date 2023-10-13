@@ -47,6 +47,11 @@ function Grid({
   const [modalDate, setModalDate] = useState("");
   const [events, setEvents] = useState(eventsData);
 
+  const deleteEvent = (index: number) => {
+    const filteredEvents = events.filter((_, i) => index !== i);
+    setEvents(filteredEvents);
+  };
+
   const handleDateSelect = (e: any) => {
     modal && e.target.value.padStart(2, "0") != modalDate.slice(0, 2)
       ? setModalDate(
@@ -60,7 +65,11 @@ function Grid({
   return (
     <>
       <div className={style.modalsArrangement}>
-        <div>{modal ? <EventsList data={events} /> : null}</div>
+        <div>
+          {modal ? (
+            <EventsList data={events} deleteEvent={deleteEvent} />
+          ) : null}
+        </div>
         <div>
           <ul>
             {daysOfWeek.map((day, index) => (

@@ -35,18 +35,20 @@ function Calendar() {
 
   return (
     <>
-      <h2>Today: {myDate.toLocaleDateString()}</h2>
+      <div className={style.page}>
+        <h2>Today: {myDate.toLocaleDateString()}</h2>
 
-      <div className={style.monthSelector}>
-        <Chevron_Left click={onLeftClick} />
-        <h3>
-          {months[month]} {year}
-        </h3>
-        <Chevron_Right click={onRightClick} />
+        <div className={style.monthSelector}>
+          <Chevron_Left click={onLeftClick} />
+          <h3>
+            {months[month]} {year}
+          </h3>
+          <Chevron_Right click={onRightClick} />
+        </div>
+
+        <Date />
+        <Grid monthToShow={month} yearToShow={year} />
       </div>
-
-      <Date />
-      <Grid monthToShow={month} yearToShow={year} />
     </>
   );
 }

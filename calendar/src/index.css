@@ -32,7 +32,7 @@ body {
   min-height: 100vh;
   background-image: linear-gradient(#ffe1fe 50%, #ff16f4);
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 h1 {

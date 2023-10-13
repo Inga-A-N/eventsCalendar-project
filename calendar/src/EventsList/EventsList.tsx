@@ -1,11 +1,28 @@
 import EventCard from "../components/EventCard/EventCard";
-// import style from "./EventsList.module.scss";
+import style from "./EventsList.module.scss";
 
-function EventsList({ data }) {
+function EventsList({
+  data,
+  deleteEvent,
+}: {
+  data: {
+    eventName: string;
+    startDate: string;
+    endDate: string;
+    location: string;
+    label: string;
+  }[];
+  deleteEvent: (index: number) => void;
+}) {
   return (
-    <section>
-      {data.map((oneEvent, index: number) => (
-        <EventCard key={index} cardEvent={oneEvent} />
+    <section className={style.eventsSection}>
+      {data.map((oneEvent: object, index: number) => (
+        <EventCard
+          key={index}
+          cardEvent={oneEvent}
+          deleteEvent={deleteEvent}
+          eventIndex={index}
+        />
       ))}
     </section>
   );

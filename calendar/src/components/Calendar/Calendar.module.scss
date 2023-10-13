@@ -1,7 +1,12 @@
+// .page {
+//   max-height: fit-content;
+// }
+
 .monthSelector {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  // height: 80vh;
   h3 {
     width: 5rem;
   }
