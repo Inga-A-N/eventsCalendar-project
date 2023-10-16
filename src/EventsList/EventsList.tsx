@@ -16,14 +16,25 @@ function EventsList({
 }) {
   return (
     <section className={style.eventsSection}>
-      {data.map((oneEvent: object, index: number) => (
-        <EventCard
-          key={index}
-          cardEvent={oneEvent}
-          deleteEvent={deleteEvent}
-          eventIndex={index}
-        />
-      ))}
+      {data.map(
+        (
+          oneEvent: {
+            eventName: string;
+            startDate: string;
+            endDate: string;
+            location: string;
+            label: string;
+          },
+          index: number
+        ) => (
+          <EventCard
+            key={index}
+            cardEvent={oneEvent}
+            deleteEvent={deleteEvent}
+            eventIndex={index}
+          />
+        )
+      )}
     </section>
   );
 }

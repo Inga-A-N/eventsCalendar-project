@@ -52,6 +52,16 @@ function Grid({
     setEvents(filteredEvents);
   };
 
+  const addEvent = (newEvent: {
+    eventName: string;
+    startDate: string;
+    endDate: string;
+    location: string;
+    label: string;
+  }) => {
+    setEvents([...events, newEvent]);
+  };
+
   const handleDateSelect = (e: any) => {
     modal && e.target.value.padStart(2, "0") != modalDate.slice(0, 2)
       ? setModalDate(
@@ -105,7 +115,9 @@ function Grid({
             )}
           </ul>
         </div>
-        <div>{modal ? <Modal date={modalDate} /> : null}</div>
+        <div>
+          {modal ? <Modal date={modalDate} addEvent={addEvent} /> : null}
+        </div>
       </div>
     </>
   );

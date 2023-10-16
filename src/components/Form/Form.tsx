@@ -3,29 +3,32 @@ import labels from "../../utils/eventsLabels";
 
 import { FormEvent, useState } from "react";
 
-function Form({ date }) {
+function Form({
+  date,
+  addEvent,
+}: {
+  date: string;
+  addEvent: (newEvent: any) => void;
+}) {
   const defaultValues = {
     eventName: "",
-    startDate: { date },
-    endDate: { date },
+    startDate: String({ date }),
+    endDate: String({ date }),
     location: "",
     label: "",
   };
   const [formValues, setFormValues] = useState({
-    eventName: "",
-    startDate: { date },
-    endDate: { date },
-    location: "",
-    label: "",
+    defaultValues,
   });
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log("Form submitted", formValues);
+    addEvent(formValues);
     setFormValues(defaultValues);
   };
 
-  const onChange = (e) => {
+  const onChange = (e: { target: { value: any; name?: any } }) => {
     console.log(e.target.value);
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
@@ -39,6 +42,7 @@ function Form({ date }) {
           id="eventName"
           name="eventName"
           onChange={onChange}
+          required
         />
       </div>
       <div className={style.field}>
@@ -48,11 +52,18 @@ function Form({ date }) {
           id="startDate"
           name="startDate"
           onChange={onChange}
+          placeholder={date}
         />
       </div>
       <div className={style.field}>
         <label htmlFor="endDate">End Date</label>
-        <input type="text" id="endDate" name="endDate" onChange={onChange} />
+        <input
+          type="text"
+          id="endDate"
+          name="endDate"
+          onChange={onChange}
+          placeholder={date}
+        />
       </div>
       <div className={style.field}>
         <label htmlFor="location">Location</label>
