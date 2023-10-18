@@ -77,7 +77,11 @@ function Grid({
       <div className={style.modalsArrangement}>
         <div>
           {modal ? (
-            <EventsList data={events} deleteEvent={deleteEvent} />
+            <EventsList
+              data={events}
+              deleteEvent={deleteEvent}
+              eventStartDate={modalDate}
+            />
           ) : null}
         </div>
         <div>

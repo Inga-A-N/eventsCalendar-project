@@ -27,4 +27,32 @@ export const eventsData = [
     location: "Home",
     label: "Other",
   },
+  {
+    eventName: "Event 5",
+    startDate: "01/01/2023",
+    endDate: "18/10/2023",
+    location: "Home",
+    label: "Birthday",
+  },
+  {
+    eventName: "Event 6",
+    startDate: "18/10/2023",
+    endDate: "18/10/2023",
+    location: "Home",
+    label: "Other",
+  },
+  {
+    eventName: "Event 3",
+    startDate: "18/10/2023",
+    endDate: "18/10/2023",
+    location: "Home",
+    label: "Birthday",
+  },
+  {
+    eventName: "Event 4",
+    startDate: "19/10/2023",
+    endDate: "19/10/2023",
+    location: "Home",
+    label: "Other",
+  },
 ];

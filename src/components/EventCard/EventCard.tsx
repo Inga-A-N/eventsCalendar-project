@@ -4,6 +4,7 @@ function EventCard({
   cardEvent,
   deleteEvent,
   eventIndex,
+  eventStartDate,
 }: {
   cardEvent: {
     eventName: string;
@@ -20,15 +21,19 @@ function EventCard({
     deleteEvent(eventIndex);
   };
   return (
-    <div className={style.eventCard}>
-      <h2>{eventName}</h2>
-      <h4>Start: {startDate}</h4>
-      <h4>End: {endDate}</h4>
-      <h4>Location: {location}</h4>
-      <h4>{label}</h4>
+    <>
+      {eventStartDate == startDate ? (
+        <div className={style.eventCard}>
+          <h2>{eventName}</h2>
+          <h4>Start: {startDate}</h4>
+          <h4>End: {endDate}</h4>
+          <h4>Location: {location}</h4>
+          <h4>{label}</h4>
 
-      <button onClick={onDeleteEventButtonClick}>Delete event</button>
-    </div>
+          <button onClick={onDeleteEventButtonClick}>Delete event</button>
+        </div>
+      ) : null}
+    </>
   );
 }
 

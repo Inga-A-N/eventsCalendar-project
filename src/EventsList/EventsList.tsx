@@ -3,6 +3,7 @@ import style from "./EventsList.module.scss";
 
 function EventsList({
   data,
+  eventStartDate,
   deleteEvent,
 }: {
   data: {
@@ -32,6 +33,7 @@ function EventsList({
             cardEvent={oneEvent}
             deleteEvent={deleteEvent}
             eventIndex={index}
+            eventStartDate={eventStartDate}
           />
         )
       )}

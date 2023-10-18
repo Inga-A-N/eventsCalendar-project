@@ -10,22 +10,22 @@ function Form({
   date: string;
   addEvent: (newEvent: any) => void;
 }) {
-  const defaultValues = {
-    eventName: "",
-    startDate: String({ date }),
-    endDate: String({ date }),
-    location: "",
-    label: "",
-  };
-  const [formValues, setFormValues] = useState({
-    defaultValues,
-  });
+  // const defaultValues = {
+  //   eventName: "",
+  //   startDate: "",
+  //   endDate: "",
+  //   location: "",
+  //   label: "",
+  // };
+  const [formValues, setFormValues] = useState({});
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = (e: any) => {
     e.preventDefault();
     console.log("Form submitted", formValues);
+    console.log({ date });
     addEvent(formValues);
-    setFormValues(defaultValues);
+    e.target.reset();
+    // setFormValues(defaultValues);
   };
 
   const onChange = (e: { target: { value: any; name?: any } }) => {
@@ -34,7 +34,7 @@ function Form({
     setFormValues({ ...formValues, [name]: value });
   };
   return (
-    <form className={style.form}>
+    <form className={style.form} onSubmit={onSubmit}>
       <div className={style.field}>
         <label htmlFor="eventName">Event Name</label>
         <input
@@ -52,7 +52,8 @@ function Form({
           id="startDate"
           name="startDate"
           onChange={onChange}
-          placeholder={date}
+          // placeholder={date}
+          defaultValue={date}
         />
       </div>
       <div className={style.field}>
@@ -88,7 +89,7 @@ function Form({
         </select>
       </div>
       <div className={style.field}>
-        <button onClick={onSubmit}>Add</button>
+        <button>Add</button>
       </div>
     </form>
   );
