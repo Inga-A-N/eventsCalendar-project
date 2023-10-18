@@ -15,6 +15,7 @@ function EventCard({
   };
   deleteEvent: (index: number) => void;
   eventIndex: number;
+  eventStartDate: string;
 }) {
   const { eventName, startDate, endDate, location, label } = cardEvent;
   const onDeleteEventButtonClick = (e) => {

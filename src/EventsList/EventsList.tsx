@@ -14,6 +14,7 @@ function EventsList({
     label: string;
   }[];
   deleteEvent: (index: number) => void;
+  eventStartDate: string;
 }) {
   return (
     <section className={style.eventsSection}>

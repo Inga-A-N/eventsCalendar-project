@@ -1,7 +1,7 @@
 import style from "./Form.module.scss";
 import labels from "../../utils/eventsLabels";
 
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 function Form({
   date,
